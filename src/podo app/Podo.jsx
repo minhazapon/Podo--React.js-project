@@ -3,7 +3,6 @@ import { useState } from "react"
 
 function Podo() {
 
-
     ///date work///
     const [date, setDate] = useState("")
 
@@ -18,7 +17,6 @@ function Podo() {
     }, [])
     ///date work///
 
-
     return (
         <div className=" m-20 ">
             <div>
@@ -30,6 +28,7 @@ function Podo() {
                     <form>
                         <div className=" flex justify-center items-center ">
                             <input
+                                required
                                 className=" border-[1px] h-[50px] w-[400px] p-3 rounded-l-[20px] font-serif "
                                 placeholder="Add Your Task"
                                 type="text" />
