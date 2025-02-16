@@ -2,17 +2,29 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { FaDeleteLeft } from "react-icons/fa6";
 
+const todoKeys = "todoData"
+
 function Podo() {
 
     const [inputValue, setInputValue] = useState("")
-    const [task, setTask] = useState([])
+    const [task, setTask] = useState(() => {
+        const data = localStorage.getItem(todoKeys)
+        if (!data) return [];
+        try {
+            return JSON.parse(data) || [];
+        } catch (error) {
+            console.error("Error parsing JSON:", error);
+            return []; // Fallback to an empty array
+        }
+    })
+
+    localStorage.setItem(todoKeys, JSON.stringify(task))
 
     const handleInput = (value) => {
         setInputValue(value)
     }
 
     const handleForm = (e) => {
-
         e.preventDefault()
         if (!inputValue) return
         if (task.includes(inputValue)) {
@@ -21,7 +33,6 @@ function Podo() {
         }
         setTask((preTask) => [...preTask, inputValue])
         setInputValue("")
-
     }
 
     const handleButton = () => {
@@ -29,10 +40,8 @@ function Podo() {
     }
 
     const handleDelete = (addValue) => {
-
         const deleteItems = task.filter((deleteTask) => deleteTask !== addValue)
         setTask(deleteItems)
-
     }
 
 
@@ -75,7 +84,7 @@ function Podo() {
                     </form>
                 </div>
                 <div>
-                    <div>
+                    <div className=" grid  md:grid-cols-3 gap-5 ">
                         {
                             task.map((task, index) => <div className=" flex justify-center mt-5 " key={index}>
                                 <p className=" bg-white border-[1px] h-[50px] p-3 w-[500px] rounded-[20px]  ">
