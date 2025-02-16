@@ -28,6 +28,13 @@ function Podo() {
         setTask([])
     }
 
+    const handleDelete = (addValue) => {
+
+        const deleteItems = task.filter((deleteTask) => deleteTask !== addValue)
+        setTask(deleteItems)
+
+    }
+
 
     ///date work///
     const [date, setDate] = useState("")
@@ -75,19 +82,19 @@ function Podo() {
                                     <p className=" flex justify-between items-center gap-5  ">
                                         <p>{task}</p>
                                         <div>
-                                            <p> <FaDeleteLeft className=" cursor-pointer h-[25px] w-[25px] "></FaDeleteLeft>  </p>
+                                            <button onClick={() => handleDelete(task)}> <FaDeleteLeft className=" cursor-pointer h-[25px] w-[25px] "></FaDeleteLeft> </button>
                                         </div>
                                     </p>
                                 </p>
                             </div>)
                         }
                     </div>
-                </div>
+                </div >
                 <div className=" flex justify-center mt-5 cursor-pointer ">
                     <button onClick={handleButton} className=" btn bg-red-600 text-white w-[500px] rounded-[20px] ">Clear all</button>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 
