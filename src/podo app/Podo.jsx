@@ -1,8 +1,5 @@
 
-
-
 function Podo() {
-
     return (
         <div className=" m-20 ">
             <div>
@@ -20,7 +17,7 @@ function Podo() {
                 </div>
                 <div>
                     <div>
-
+                        {/* //data here */}
                     </div>
                 </div>
                 <div className=" flex justify-center mt-8 ">
