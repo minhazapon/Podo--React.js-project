@@ -67,23 +67,21 @@ function Podo() {
                 <div>
                     <div>
                         {
-
                             task.map((task, index) => <div className=" flex justify-center mt-5 " key={index}>
-                                <p className=" bg-white border-[1px] h-[50px] p-3 w-[400px]  ">
+                                <p className=" bg-white border-[1px] h-[50px] p-3 w-[500px] rounded-[20px]  ">
                                     <p className=" flex justify-between items-center gap-5  ">
                                         <p>{task}</p>
                                         <div>
-                                            <p> <FaDeleteLeft className=" h-[25px] w-[25px] "></FaDeleteLeft>  </p>
+                                            <p> <FaDeleteLeft className=" cursor-pointer h-[25px] w-[25px] "></FaDeleteLeft>  </p>
                                         </div>
                                     </p>
                                 </p>
                             </div>)
-
                         }
                     </div>
                 </div>
-                <div className=" flex justify-center mt-8 cursor-pointer ">
-                    <button className=" btn bg-red-600 text-white ">Clear all</button>
+                <div className=" flex justify-center mt-5 cursor-pointer ">
+                    <button className=" btn bg-red-600 text-white w-[500px] rounded-[20px] ">Clear all</button>
                 </div>
             </div>
         </div>
