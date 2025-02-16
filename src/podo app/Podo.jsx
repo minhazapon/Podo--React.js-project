@@ -24,6 +24,9 @@ function Podo() {
 
     }
 
+    const handleButton = () => {
+        setTask([])
+    }
 
 
     ///date work///
@@ -81,7 +84,7 @@ function Podo() {
                     </div>
                 </div>
                 <div className=" flex justify-center mt-5 cursor-pointer ">
-                    <button className=" btn bg-red-600 text-white w-[500px] rounded-[20px] ">Clear all</button>
+                    <button onClick={handleButton} className=" btn bg-red-600 text-white w-[500px] rounded-[20px] ">Clear all</button>
                 </div>
             </div>
         </div>
