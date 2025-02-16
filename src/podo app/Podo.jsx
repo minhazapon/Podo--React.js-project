@@ -1,7 +1,30 @@
 import { useEffect } from "react"
 import { useState } from "react"
+import { FaDeleteLeft } from "react-icons/fa6";
 
 function Podo() {
+
+    const [inputValue, setInputValue] = useState("")
+    const [task, setTask] = useState([])
+
+    const handleInput = (value) => {
+        setInputValue(value)
+    }
+
+    const handleForm = (e) => {
+
+        e.preventDefault()
+        if (!inputValue) return
+        if (task.includes(inputValue)) {
+            setInputValue("")
+            return;
+        }
+        setTask((preTask) => [...preTask, inputValue])
+        setInputValue("")
+
+    }
+
+
 
     ///date work///
     const [date, setDate] = useState("")
@@ -25,15 +48,17 @@ function Podo() {
                     <p className=" text-center text-green-500 font-thin mt-5 "> {date} </p>
                 </div>
                 <div className=" mt-6 ">
-                    <form>
+                    <form onSubmit={handleForm}>
                         <div className=" flex justify-center items-center ">
                             <input
                                 required
+                                value={inputValue}
+                                onChange={(e) => handleInput(e.target.value)}
                                 className=" border-[1px] h-[50px] w-[400px] p-3 rounded-l-[20px] font-serif "
                                 placeholder="Add Your Task"
                                 type="text" />
                             <input
-                                className=" bg-green-500 h-[50px] p-3 w-[100px] rounded-r-[20px] font-serif text-white"
+                                className=" cursor-pointer bg-green-500 h-[50px] p-3 w-[100px] rounded-r-[20px] font-serif text-white"
                                 type="submit"
                                 value="add" />
                         </div>
@@ -41,10 +66,23 @@ function Podo() {
                 </div>
                 <div>
                     <div>
-                        {/* //data here */}
+                        {
+
+                            task.map((task, index) => <div className=" flex justify-center mt-5 " key={index}>
+                                <p className=" bg-white border-[1px] h-[50px] p-3 w-[400px]  ">
+                                    <p className=" flex justify-between items-center gap-5  ">
+                                        <p>{task}</p>
+                                        <div>
+                                            <p> <FaDeleteLeft className=" h-[25px] w-[25px] "></FaDeleteLeft>  </p>
+                                        </div>
+                                    </p>
+                                </p>
+                            </div>)
+
+                        }
                     </div>
                 </div>
-                <div className=" flex justify-center mt-8 ">
+                <div className=" flex justify-center mt-8 cursor-pointer ">
                     <button className=" btn bg-red-600 text-white ">Clear all</button>
                 </div>
             </div>
